@@ -15,6 +15,22 @@ spec:
       labels:
         app: grafana
     spec:
+      volumes:
+      - name: grafana-datasource
+        emptyDir: {}
+      initContainers:
+      - name: grafana-config-setup
+        image: busybox
+        command:
+        - sh
+        - -c
+        - |
+          echo '<content-of-datasource.yaml>' > /tmp/datasource.yaml
+          # Conversion from YAML to JSON and save to the target directory
+          cat /tmp/datasource.yaml | busybox y2j > /etc/grafana/provisioning/datasources/datasource.json
+        volumeMounts:
+        - name: grafana-datasource
+          mountPath: /etc/grafana/provisioning/datasources/
       containers:
       - name: grafana
         image: grafana/grafana:latest
@@ -28,3 +44,6 @@ spec:
           requests:
             cpu: "500m"
             memory: "500Mi"
+          volumeMounts:
+          - name: grafana-datasource
+            mountPath: /etc/grafana/provisioning/datasources/
