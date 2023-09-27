@@ -11,6 +11,7 @@ spec:
       app: grafana
   template:
     metadata:
+      namespace: grafana
       labels:
         app: grafana
     spec:
