@@ -13,9 +13,13 @@ spec:
       labels:
         app: prometheus
     spec:
+      serviceAccountName: prometheus
       containers:
       - name: prometheus
         image: prom/prometheus:latest
+        args:
+          - "--config.file=/etc/prometheus/prometheus.yml"
+          - "--storage.tsdb.path=/prometheus"
         ports:
         - name: ui
           containerPort: 9090
@@ -26,3 +30,10 @@ spec:
           requests:
             cpu: "0.5"
             memory: "500Mi"
+        volumeMounts:
+        - name: prometheus-config-vol
+          mountPath: /etc/prometheus/
+      volumes:
+      - name: prometheus-config-vol
+        configMap:
+          name: prometheus-config
