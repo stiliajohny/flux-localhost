@@ -9,6 +9,7 @@ spec:
   interval: 1m0s
   ref:
     branch: master
+    subPath: apps
   secretRef:
     name: flux-system
   url: ssh://git@github.com/stiliajohny/flux-localhost
@@ -19,7 +20,7 @@ metadata:
   name: flux-system
   namespace: flux-system
 spec:
-  interval: 10m0s
+  interval: 1m0s
   path: ./cluster/k3d-local
   prune: true
   sourceRef:
