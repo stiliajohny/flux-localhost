@@ -4,4 +4,4 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - hashicorp-helmrepository.yaml
-- ../../../../apps/vault/vault-helmrelease.yaml  # This is relative to the location of kustomization.yaml
+# - ../../../../apps/vault/vault-helmrelease.yaml  # This is relative to the location of kustomization.yaml
