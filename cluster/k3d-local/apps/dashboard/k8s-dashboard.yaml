@@ -318,6 +318,7 @@ spec:
           args:
             - --enable-insecure-login
             - --namespace=kubernetes-dashboard
+            - --enable-skip-login
           volumeMounts:
               # Create on-disk volume to store exec logs
             - mountPath: /tmp
