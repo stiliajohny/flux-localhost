@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-################################
-### Namespaces
-################################
+# ################################
+# ### Namespaces
+# ################################
 
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: kubernetes-dashboard
-  labels:
-    app.kubernetes.io/part-of: kubernetes-dashboard
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: kubernetes-dashboard
+#   labels:
+#     app.kubernetes.io/part-of: kubernetes-dashboard
 
 ---
 
