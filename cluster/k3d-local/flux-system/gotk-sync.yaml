@@ -9,7 +9,6 @@ spec:
   interval: 1m0s
   ref:
     branch: master
-    subPath: apps
   secretRef:
     name: flux-system
   url: ssh://git@github.com/stiliajohny/flux-localhost
