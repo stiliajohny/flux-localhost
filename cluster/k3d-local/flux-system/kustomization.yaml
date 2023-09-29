@@ -3,6 +3,4 @@ kind: Kustomization
 resources:
   - gotk-components.yaml
   - gotk-sync.yaml
-  - ../namespaces/monitoring/
-  - ../namespaces/kubernetes-dashboard/
   - ../apps/dashboard/
