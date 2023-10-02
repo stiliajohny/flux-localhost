@@ -3,3 +3,5 @@ kind: Kustomization
 
 resources:
   - monitoring-namespace.yaml
+  - monitoring-prometheus-helm-release.yaml
+  - monitoring-prometheus-helm-repo.yaml
