@@ -5,3 +5,7 @@ resources:
   - monitoring-namespace.yaml
   - monitoring-prometheus-helm-release.yaml
   - monitoring-prometheus-helm-repo.yaml
+  - monitoring-kube-state-metrics-helm-release.yaml
+  - monitoring-kube-state-metrics-helm-repo.yaml
+  - monitoring-grafana-helm-release.yaml
+  - monitoring-grafana-helm-repo.yaml
