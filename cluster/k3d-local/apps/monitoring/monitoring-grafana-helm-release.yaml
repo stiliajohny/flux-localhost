@@ -31,7 +31,10 @@ spec:
           gnetId: 13332
           datasource: Prometheus
           revision: 1
-
+        kubernetes-cluster-monitoring-via-prometheus:
+          gnetId: 315
+          datasource: Prometheus
+          revision: 1
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
