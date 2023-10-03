@@ -25,3 +25,9 @@ spec:
           url: http://prometheus-server.monitoring.svc.cluster.local
           access: proxy
           isDefault: true
+    dashboards:
+      default:
+        mariadb:
+          gnetId: 7362
+          version: 5
+          datasource: Prometheus
