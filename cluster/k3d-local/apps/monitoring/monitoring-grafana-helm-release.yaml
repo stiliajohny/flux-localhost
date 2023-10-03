@@ -13,3 +13,10 @@ spec:
         name: grafana
         namespace: flux-system
       version: "6.60.0"
+  values:
+    adminUser: admin
+    # adminPassword: strongpassword
+    admin:
+      existingSecret: ""
+      userKey: admin-user
+      passwordKey: admin-password
