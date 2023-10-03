@@ -27,13 +27,11 @@ spec:
           isDefault: true
     dashboards:
       default:
-        mariadb:
-          gnetId: 7362
-          version: 5
+        kube-state-metrics-v2:
+          gnetId: 13332
           datasource: Prometheus
-        amazon-alb:
-          gnetId: 650
-          datasource: CloudWatch
+          revision: 1
+
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
