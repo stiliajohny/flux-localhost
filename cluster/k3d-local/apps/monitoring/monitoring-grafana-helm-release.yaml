@@ -35,6 +35,10 @@ spec:
           gnetId: 315
           datasource: Prometheus
           revision: 1
+        kubernetes-cluster-prometheus:
+          gnetId: 6417
+          datasource: Prometheus
+          revision: 1
     dashboardProviders:
       dashboardproviders.yaml:
         apiVersion: 1
