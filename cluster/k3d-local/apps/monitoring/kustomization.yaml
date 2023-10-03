@@ -9,3 +9,4 @@ resources:
   - monitoring-kube-state-metrics-helm-repo.yaml
   - monitoring-grafana-helm-release.yaml
   - monitoring-grafana-helm-repo.yaml
+  - grafana-ingress.yaml
