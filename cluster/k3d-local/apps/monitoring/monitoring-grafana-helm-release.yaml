@@ -16,3 +16,12 @@ spec:
   values:
     adminUser: admin
     adminPassword: strongpassword
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus-prometheus-server
+          access: proxy
+          isDefault: true
