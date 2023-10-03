@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
   - portainer-helm-release.yaml
   - portainer-helm-repo.yaml
-  - portainer-ingress.yaml
