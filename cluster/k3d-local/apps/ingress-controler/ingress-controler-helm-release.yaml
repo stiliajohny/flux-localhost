@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-controler
+  namespace: ingress-controler
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ingress-controler
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-controler
+        namespace: flux-system
+      version: "4.8.1"

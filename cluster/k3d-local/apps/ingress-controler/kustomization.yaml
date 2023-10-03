@@ -3,4 +3,7 @@ kind: Kustomization
 
 resources:
   - ingress-controler-namespace.yaml
-  - ingress-controler.yaml
+  - ingress-controler-helm-repo.yaml
+  - ingress-controler-helm-release.yaml
+
+  # - ingress-controler.yaml
