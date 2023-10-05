@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: "kube-bench"
+      chart: "deliveryhero/kube-bench"
       sourceRef:
         kind: HelmRepository
         name: kube-bench
