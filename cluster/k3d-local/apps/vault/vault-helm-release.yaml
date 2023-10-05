@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: "hashicorp/vault"
+      chart: "vault"
       sourceRef:
         kind: HelmRepository
         name: vault
