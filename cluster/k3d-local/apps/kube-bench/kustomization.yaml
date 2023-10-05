@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - kube-bench-namespace.yaml
+  - kube-bench-helm-release.yaml
+  - kube-bench-helm-repo.yaml
