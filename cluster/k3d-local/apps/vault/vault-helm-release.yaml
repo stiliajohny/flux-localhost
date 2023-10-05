@@ -10,6 +10,6 @@ spec:
       chart: hashicorp/vault
       sourceRef:
         kind: HelmRepository
-        name: vault
+        name: hashicorp/vault
         namespace: flux-system
       version: "0.25.0"
