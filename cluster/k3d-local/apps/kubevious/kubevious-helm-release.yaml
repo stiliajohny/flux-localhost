@@ -7,7 +7,7 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: "kubevious/kubevious"
+      chart: "kubevious"
       sourceRef:
         kind: HelmRepository
         name: kubevious
