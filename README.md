@@ -38,7 +38,7 @@ Navigate to the root directory of the repository and execute the following comma
 ```bash
 flux bootstrap git \
  --url=ssh://git@ithub.com:stiliajohny/flux-localhost \
- --branch=main \
+ --branch=master \
  --path=./cluster/k3d-local
 ```
 
