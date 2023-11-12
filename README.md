@@ -36,10 +36,19 @@ git clone github.com:stiliajohny/flux-localhost.git
 Navigate to the root directory of the repository and execute the following command to bootstrap Flux to your cluster:
 
 ```bash
+<<<<<<< Updated upstream
 flux bootstrap git \
  --url=ssh://git@ithub.com:stiliajohny/flux-localhost \
  --branch=master \
  --path=./cluster/k3d-local
+=======
+flux bootstrap github \
+--owner=stiliajohny \
+--repository=flux-localhost \
+--branch=master \
+--path=./cluster/k3d-local \
+--token-auth
+>>>>>>> Stashed changes
 ```
 
 ## Folder Structure
