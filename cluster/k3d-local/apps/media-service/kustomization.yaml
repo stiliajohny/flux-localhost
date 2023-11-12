@@ -3,8 +3,6 @@ kind: Kustomization
 
 resources:
   - media-service-deployment.yaml
-  - media-service-limit-range.yaml
   - media-service-namespace.yaml
   - media-service-pvc.yaml
-  - media-service-resource-quota.yaml
   - media-service-services.yaml
