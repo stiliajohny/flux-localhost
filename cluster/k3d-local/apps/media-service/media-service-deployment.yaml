@@ -1,0 +1,344 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr-deployment
+  namespace: media-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prowlarr
+  template:
+    metadata:
+      labels:
+        app: prowlarr
+    spec:
+      initContainers:
+      - name: init-prowlarr
+        image: alpine
+        command: ["mkdir", "-p", "/config", "/downloads", "/media"]
+        volumeMounts:
+        - mountPath: /config
+          name: prowlarr-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      containers:
+      - name: prowlarr
+        image: ghcr.io/linuxserver/prowlarr:develop
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/London"
+        ports:
+        - containerPort: 9696
+        volumeMounts:
+        - mountPath: /config
+          name: prowlarr-config
+      volumes:
+      - name: prowlarr-config
+        persistentVolumeClaim:
+          claimName: prowlarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr-deployment
+  namespace: media-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      initContainers:
+      - name: init-radarr
+        image: alpine
+        command: ["mkdir", "-p", "/config", "/media", "/downloads"]
+        volumeMounts:
+        - mountPath: /config
+          name: radarr-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      containers:
+      - name: radarr
+        image: ghcr.io/linuxserver/radarr
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/London"
+        ports:
+        - containerPort: 7878
+        volumeMounts:
+        - mountPath: /config
+          name: radarr-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      volumes:
+      - name: radarr-config
+        persistentVolumeClaim:
+          claimName: radarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr-deployment
+  namespace: media-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      initContainers:
+      - name: init-sonarr
+        image: alpine
+        command: ["mkdir", "-p", "/config", "/media", "/downloads"]
+        volumeMounts:
+        - mountPath: /config
+          name: sonarr-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      containers:
+      - name: sonarr
+        image: ghcr.io/linuxserver/sonarr:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/London"
+        ports:
+        - containerPort: 8989
+        volumeMounts:
+        - mountPath: /config
+          name: sonarr-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      volumes:
+      - name: sonarr-config
+        persistentVolumeClaim:
+          claimName: sonarr-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent-deployment
+  namespace: media-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qbittorrent
+  template:
+    metadata:
+      labels:
+        app: qbittorrent
+    spec:
+      initContainers:
+      - name: init-qbittorrent
+        image: alpine
+        command: ["mkdir", "-p", "/config", "/downloads", "/media"]
+        volumeMounts:
+        - mountPath: /config
+          name: qbittorrent-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      containers:
+      - name: qbittorrent
+        image: lscr.io/linuxserver/qbittorrent:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/London"
+        ports:
+        - containerPort: 8081
+        volumeMounts:
+        - mountPath: /config
+          name: qbittorrent-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      volumes:
+      - name: qbittorrent-config
+        persistentVolumeClaim:
+          claimName: qbittorrent-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads
+
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: transmission-deployment
+  namespace: media-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: transmission
+  template:
+    metadata:
+      labels:
+        app: transmission
+    spec:
+      initContainers:
+      - name: init-transmission
+        image: alpine
+        command: ["mkdir", "-p", "/config", "/downloads", "/media"]
+        volumeMounts:
+        - mountPath: /config
+          name: transmission-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      containers:
+      - name: transmission
+        image: lscr.io/linuxserver/transmission:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/London"
+        ports:
+        - containerPort: 9091
+        volumeMounts:
+        - mountPath: /config
+          name: transmission-config
+        - mountPath: /media
+          name: media
+        - mountPath: /downloads
+          name: downloads
+      volumes:
+      - name: transmission-config
+        persistentVolumeClaim:
+          claimName: transmission-config
+      - name: media
+        persistentVolumeClaim:
+          claimName: media
+      - name: downloads
+        persistentVolumeClaim:
+          claimName: downloads
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin-deployment
+  namespace: media-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      initContainers:
+      - name: init-jellyfin
+        image: alpine
+        command: ["mkdir", "-p", "/config", "/data/tvshows", "/data/movies"]
+        volumeMounts:
+        - mountPath: /config
+          name: jellyfin-config
+        - mountPath: /data/tvshows
+          name: tv-shows
+        - mountPath: /data/movies
+          name: movies
+      containers:
+      - name: jellyfin
+        image: lscr.io/linuxserver/jellyfin:latest
+        env:
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        - name: TZ
+          value: "Europe/London"
+        ports:
+        - containerPort: 8096
+        - containerPort: 8920
+        - containerPort: 7359
+        - containerPort: 1900
+        volumeMounts:
+        - mountPath: /config
+          name: jellyfin-config
+        - mountPath: /data/tvshows
+          name: tv-shows
+        - mountPath: /data/movies
+          name: movies
+      volumes:
+      - name: jellyfin-config
+        persistentVolumeClaim:
+          claimName: jellyfin-config
+      - name: tv-shows
+        persistentVolumeClaim:
+          claimName: tv-shows
+      - name: movies
+        persistentVolumeClaim:
+          claimName: movies

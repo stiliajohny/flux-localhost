@@ -1,0 +1,122 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr-service
+  namespace: media-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: prowlarr
+  ports:
+    - name: http
+      protocol: TCP
+      port: 9696
+      targetPort: 9696
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr-service
+  namespace: media-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: radarr
+  ports:
+    - name: http
+      protocol: TCP
+      port: 7878
+      targetPort: 7878
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr-service
+  namespace: media-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: sonarr
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8989
+      targetPort: 8989
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent-service
+  namespace: media-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: qbittorrent
+  ports:
+    - name: webui
+      protocol: TCP
+      port: 8081
+      targetPort: 8081
+    - name: tcp
+      protocol: TCP
+      port: 6881
+      targetPort: 6881
+    - name: udp
+      protocol: UDP
+      port: 6881
+      targetPort: 6881
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: transmission-service
+  namespace: media-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: transmission
+  ports:
+    - name: webui
+      protocol: TCP
+      port: 9091
+      targetPort: 9091
+    - name: tcp
+      protocol: TCP
+      port: 51413
+      targetPort: 51413
+    - name: udp
+      protocol: UDP
+      port: 51413
+      targetPort: 51413
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin-service
+  namespace: media-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: jellyfin
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8096
+      targetPort: 8096
+    - name: https
+      protocol: TCP
+      port: 8920
+      targetPort: 8920
+    - name: udp-1
+      protocol: UDP
+      port: 7359
+      targetPort: 7359
+    - name: udp-2
+      protocol: UDP
+      port: 1900
+      targetPort: 1900
