@@ -1,8 +1,10 @@
+---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - media-service-deployment.yaml
+  - media-service-pv.yaml
   - media-service-namespace.yaml
+  - media-service-deployment.yaml
   - media-service-pvc.yaml
   - media-service-services.yaml
